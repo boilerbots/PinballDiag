@@ -5,7 +5,7 @@
 
 class HW {
  public:
-  HW(unsigned base) : sim(true), BASE(base), STATUS(base+1), CONTROL(base+2) { };
+  HW(unsigned base) : sim(false), BASE(base), STATUS(base+1), CONTROL(base+2) { };
 
   int init();
 

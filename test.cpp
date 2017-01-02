@@ -3,8 +3,10 @@
 #include <unistd.h>
 #include <stdint.h>
 #include <time.h>
-//#include <QtCore>
-//#include <QtGui>
+#include <QtCore>
+#include <QtWidgets>
+#include <thread>
+#include "mainwindow.h"
 #include "test.h"
 
 /*
@@ -13,23 +15,38 @@
 
 using namespace std;
 
+Test::Test(unsigned base) : hw(base), keepRunning(1)
+{
+  testList.push_back(std::make_pair("PC port", 1));
+}
+
 void Test::anykey()
 {
-  //QMessageBox::question(parent, "Question", "Proceed?");
+  //QMessageBox message;
+  //QPushButton *yesButton = message.addButton(QMessageBox::Yes);
+
+  //message.exec();
+  //emit myMessage("Continue?");
   qDebug() << "Press a key";
 }
 
 int Test::testPort()
 {
+  keepRunning = 1;
+
   hw.portIn();
+  for (int loop(0); loop < 100 && keepRunning; loop++) {
+#if 0
+    qDebug() << "Basic Parallel port testing\n";
+    qDebug() << "Ready to start? ";
+    anykey();
 
-  qDebug() << "Basic Parallel port testing\n";
-  qDebug() << "Ready to start? ";
-  anykey();
-
-  qDebug() << "Check the following signals for activity: \n";
-  qDebug() << " STROBE\n";
-  
+    qDebug() << "Check the following signals for activity: \n";
+    qDebug() << " STROBE\n";
+#endif
+    qDebug() << "loop=" << loop;
+    std::this_thread::sleep_for(100ms);
+  }
   return 0;
 }
 
@@ -93,5 +110,12 @@ int Test::testLamps(int loops)
 
 void Test::run()
 {
-  testPort();
+  switch (nextTest)
+  {
+    case 1:
+      testPort();
+      break;
+  }
+  nextTest = -1;
 }
+
