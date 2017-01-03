@@ -14,7 +14,7 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QPushButton" name="pushButton">
+   <widget class="QPushButton" name="testInitButton">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -24,10 +24,10 @@
      </rect>
     </property>
     <property name="text">
-     <string>Test 1</string>
+     <string>Test INIT</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_2">
+   <widget class="QPushButton" name="testStrobeButton">
     <property name="geometry">
      <rect>
       <x>10</x>
@@ -37,7 +37,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Test 2</string>
+     <string>Test STROBE</string>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_3">
@@ -66,13 +66,21 @@
      <string>Init</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="testSelectButton">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>70</y>
+      <width>80</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Test SELECT</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
-  <action name="actionButton1">
-   <property name="text">
-    <string>button1</string>
-   </property>
-  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>

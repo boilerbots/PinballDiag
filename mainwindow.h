@@ -18,13 +18,23 @@ public:
     ~MainWindow();
 
 private slots:
-    void on_pushButton_clicked();
-
     void on_pushButton_2_clicked();
 
     void on_pushButton_3_clicked();
 
     void on_pushButton_4_clicked();
+
+    void on_testInitButton_pressed();
+
+    void on_testInitButton_released();
+
+    void on_testStrobeButton_pressed();
+
+    void on_testStrobeButton_released();
+
+    void on_testSelectButton_pressed();
+
+    void on_testSelectButton_released();
 
 public slots:
     void messageBox(const QString messsage);

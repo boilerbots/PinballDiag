@@ -26,6 +26,34 @@ class HW {
   void control(uint8_t reg);  // write to a control register
   void writeData(uint8_t data); // latch data
 
+  void setInit(bool high) {
+    if (high) {
+      outb((inb(CONTROL) | INIT), CONTROL);
+    }
+    else {
+      outb((inb(CONTROL) & ~INIT), CONTROL);
+    }
+  }
+
+  void setStrobe(bool high) {
+    if (high) {
+      outb((inb(CONTROL) & ~STROBE), CONTROL);
+    }
+    else {
+      outb((inb(CONTROL) | STROBE), CONTROL); // stobe low   - hardware inverted
+    }
+  }
+
+  void setSelect(bool high) {
+    if (high) {
+      outb((inb(CONTROL) & ~SELECT), CONTROL);
+    }
+    else {
+      outb((inb(CONTROL) | SELECT), CONTROL); // select low   - hardware inverted
+    }
+  }
+
+
  private:
   bool sim;
   uint8_t ctl;

@@ -18,15 +18,6 @@ MainWindow::~MainWindow()
   delete ui;
 }
 
-void MainWindow::on_pushButton_clicked()
-{
-  testThread = std::thread (&Test::testPort, &test);
-
-  //test.setNextTest(1);
-  //test.start();
-  //foo.join();
-}
-
 void MainWindow::on_pushButton_2_clicked()
 {
   QMessageBox::question(this, "Question", "Proceed?");
@@ -39,11 +30,41 @@ void MainWindow::messageBox(const QString messsage)
 
 void MainWindow::on_pushButton_3_clicked()
 {
-    test.terminate();
-    testThread.join();
+
 }
 
 void MainWindow::on_pushButton_4_clicked()
 {
     test.init();
+}
+
+void MainWindow::on_testInitButton_pressed()
+{
+    test.hw.setInit(true);
+}
+
+void MainWindow::on_testInitButton_released()
+{
+    test.hw.setInit(false);
+}
+
+void MainWindow::on_testStrobeButton_pressed()
+{
+    test.hw.setStrobe(true);
+}
+
+
+void MainWindow::on_testStrobeButton_released()
+{
+    test.hw.setStrobe(false);
+}
+
+void MainWindow::on_testSelectButton_pressed()
+{
+    test.hw.setSelect(true);
+}
+
+void MainWindow::on_testSelectButton_released()
+{
+    test.hw.setSelect(false);
 }

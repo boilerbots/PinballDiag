@@ -17,7 +17,6 @@ using namespace std;
 
 Test::Test(unsigned base) : hw(base), keepRunning(1)
 {
-  testList.push_back(std::make_pair("PC port", 1));
 }
 
 void Test::anykey()
@@ -59,7 +58,7 @@ int Test::testLamps(int loops)
   uint8_t column = 0;
   uint8_t row = 0;
   uint8_t lamps = 0xff;
-  struct timespec turnOn, turnOff, now;
+  struct timespec turnOn, turnOff;
 
   clock_gettime( CLOCK_MONOTONIC_RAW, &turnOn);
   clock_gettime( CLOCK_MONOTONIC_RAW, &turnOff);
@@ -110,12 +109,6 @@ int Test::testLamps(int loops)
 
 void Test::run()
 {
-  switch (nextTest)
-  {
-    case 1:
-      testPort();
-      break;
-  }
-  nextTest = -1;
+
 }
 

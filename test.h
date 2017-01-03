@@ -5,6 +5,8 @@
 class Test
 {
 public:
+  HW hw;
+
   Test(unsigned base);
 
   void init() { hw.init(); };
@@ -19,9 +21,6 @@ signals:
   void myMessage(const QString);
 
 private:
-  HW hw;
-  QObject *parent;
-  std::vector< std::pair< std::string, int> > testList;
   void anykey();
   int nextTest;
   int keepRunning;
