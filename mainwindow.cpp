@@ -71,8 +71,8 @@ void MainWindow::on_testSelectButton_released()
 
 void MainWindow::on_testDataSlider_valueChanged(int value)
 {
+  testData_ = value;
   if (ui->testDataButton->isChecked()) {
-    testData_ = value;
     test.hw.writeDataOnly(1 << testData_);
   }
 }
@@ -92,4 +92,20 @@ void MainWindow::on_testDataButton_toggled(bool checked)
 void MainWindow::on_testDataValue_overflow()
 {
 
+}
+
+void MainWindow::on_testControlButton_toggled(bool checked)
+{
+    if (checked) {
+      test.hw.control(controlData_);
+    }
+}
+
+void MainWindow::on_testControlSlider_valueChanged(int value)
+{
+    controlData_ = value;
+    if (ui->testControlButton->isChecked()) {
+      test.hw.control(controlData_);
+      test.hw.writeData(0, (value == 5) ? 10:0); // decoder output will generate a pulse
+    }
 }

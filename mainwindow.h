@@ -42,6 +42,10 @@ private slots:
 
     void on_testDataValue_overflow();
 
+    void on_testControlButton_toggled(bool checked);
+
+    void on_testControlSlider_valueChanged(int value);
+
 public slots:
     void messageBox(const QString messsage);
 
@@ -51,6 +55,7 @@ private:
     Test test;
     std::thread testThread;
     int testData_;
+    int controlData_;
 };
 
 #endif // MAINWINDOW_H

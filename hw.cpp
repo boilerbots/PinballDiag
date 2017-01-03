@@ -27,10 +27,10 @@ int HW::init() {
     outb(0,BASE); //initialize data
 
     // change direction to input
-    uint8_t oldctl = inb(CONTROL);
-    ctl = (oldctl | DIRECTION | SELECT); //Input mode
-    ctl &= ~INIT;
-    std::cout << "oldctl=" << std::hex << (unsigned)oldctl << std::dec << std::endl;
+    //uint8_t oldctl = inb(CONTROL);
+    ctl = (DIRECTION | SELECT); //Input mode
+    //ctl &= ~INIT;
+    //std::cout << "oldctl=" << std::hex << (unsigned)oldctl << std::dec << std::endl;
     outb(ctl, CONTROL);
   }
 
@@ -48,11 +48,14 @@ void HW::control(uint8_t reg) {
   }
 }
 
-void HW::writeData(uint8_t data) {
+void HW::writeData(uint8_t data, time_t delay) {
 
   if (!sim) {
     outb(data,BASE);
     outb((ctl | STROBE), CONTROL); // stobe low   - hardware inverted
+    if (delay) {
+      usleep(delay);
+    }
     outb((ctl & ~STROBE), CONTROL);
   }
 }
