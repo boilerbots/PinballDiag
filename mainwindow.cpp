@@ -35,36 +35,61 @@ void MainWindow::on_pushButton_3_clicked()
 
 void MainWindow::on_pushButton_4_clicked()
 {
-    test.init();
+  test.init();
 }
 
 void MainWindow::on_testInitButton_pressed()
 {
-    test.hw.setInit(true);
+  test.hw.setInit(true);
 }
 
 void MainWindow::on_testInitButton_released()
 {
-    test.hw.setInit(false);
+  test.hw.setInit(false);
 }
 
 void MainWindow::on_testStrobeButton_pressed()
 {
-    test.hw.setStrobe(true);
+  test.hw.setStrobe(true);
 }
 
 
 void MainWindow::on_testStrobeButton_released()
 {
-    test.hw.setStrobe(false);
+  test.hw.setStrobe(false);
 }
 
 void MainWindow::on_testSelectButton_pressed()
 {
-    test.hw.setSelect(true);
+  test.hw.setSelect(true);
 }
 
 void MainWindow::on_testSelectButton_released()
 {
-    test.hw.setSelect(false);
+  test.hw.setSelect(false);
+}
+
+void MainWindow::on_testDataSlider_valueChanged(int value)
+{
+  if (ui->testDataButton->isChecked()) {
+    testData_ = value;
+    test.hw.writeDataOnly(1 << testData_);
+  }
+}
+
+void MainWindow::on_testDataButton_toggled(bool checked)
+{
+  if (checked) {
+    test.hw.portOut();
+    test.hw.writeDataOnly(1 << testData_);
+  }
+  else {
+    test.hw.writeDataOnly(0);
+    test.hw.portIn();
+  }
+}
+
+void MainWindow::on_testDataValue_overflow()
+{
+
 }

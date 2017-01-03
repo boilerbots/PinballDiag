@@ -10,21 +10,22 @@ class HW {
   int init();
 
   inline void portIn() {
-    ctl |= DIRECTION;
+    ctl |= (DIRECTION | SELECT);
     if (!sim) {
       outb(ctl, CONTROL);
     }
-  };
+  }
 
   inline void portOut() {
-    ctl &= ~DIRECTION;
+    ctl &= ~(DIRECTION | SELECT);
     if (!sim) {
       outb(ctl, CONTROL);
     }
-  };
+  }
 
   void control(uint8_t reg);  // write to a control register
   void writeData(uint8_t data); // latch data
+  void writeDataOnly(uint8_t data) { outb(data, BASE); }
 
   void setInit(bool high) {
     if (high) {

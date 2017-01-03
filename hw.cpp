@@ -26,10 +26,9 @@ int HW::init() {
     //data = inb(BASE);
     outb(0,BASE); //initialize data
 
-    // change direction to output
+    // change direction to input
     uint8_t oldctl = inb(CONTROL);
-    ctl = (oldctl | DIRECTION); //Input mode
-    ctl &= ~SELECT;
+    ctl = (oldctl | DIRECTION | SELECT); //Input mode
     ctl &= ~INIT;
     std::cout << "oldctl=" << std::hex << (unsigned)oldctl << std::dec << std::endl;
     outb(ctl, CONTROL);

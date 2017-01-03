@@ -36,6 +36,12 @@ private slots:
 
     void on_testSelectButton_released();
 
+    void on_testDataSlider_valueChanged(int value);
+
+    void on_testDataButton_toggled(bool checked);
+
+    void on_testDataValue_overflow();
+
 public slots:
     void messageBox(const QString messsage);
 
@@ -44,6 +50,7 @@ private:
     Ui::MainWindow *ui;
     Test test;
     std::thread testThread;
+    int testData_;
 };
 
 #endif // MAINWINDOW_H
