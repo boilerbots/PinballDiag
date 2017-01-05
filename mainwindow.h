@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <thread>
 #include "test.h"
+#include "test_thread.h"
 
 namespace Ui {
 class MainWindow;
@@ -46,16 +47,22 @@ private slots:
 
     void on_testControlSlider_valueChanged(int value);
 
+    void on_testWatchdogButton_toggled(bool checked);
+
+    void on_delayBox_valueChanged(int arg1);
+
 public slots:
     void messageBox(const QString messsage);
-
 
 private:
     Ui::MainWindow *ui;
     Test test;
-    std::thread testThread;
+    //std::thread testThread;
     int testData_;
     int controlData_;
+    QThread *pWorkerThread_;
+    TestThread *worker;
+    long watchdogDelay_;
 };
 
 #endif // MAINWINDOW_H

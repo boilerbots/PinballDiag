@@ -1,5 +1,5 @@
 #pragma once
-#include <QtCore>
+//#include <QtCore>
 #include "hw.h"
 
 class Test
@@ -13,9 +13,9 @@ public:
 
   int testLamps(int loops);
   int testPort();
-  void run();
+  //void run();
   void setNextTest(int test) { nextTest = test; };
-  void terminate() { keepRunning = 0; };
+  //void terminate() { keepRunning = 0; };
 
 signals:
   void myMessage(const QString);

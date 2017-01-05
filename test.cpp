@@ -106,9 +106,3 @@ int Test::testLamps(int loops)
 
   return 0;
 }
-
-void Test::run()
-{
-
-}
-

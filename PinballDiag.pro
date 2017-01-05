@@ -15,10 +15,12 @@ CONFIG += c++14
 SOURCES += main.cpp\
         mainwindow.cpp \
     hw.cpp \
-    test.cpp
+    test.cpp \
+    test_thread.cpp
 
 HEADERS  += mainwindow.h \
     hw.h \
-    test.h
+    test.h \
+    test_thread.h
 
 FORMS    += mainwindow.ui

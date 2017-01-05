@@ -57,10 +57,12 @@ void HW::writeData(uint8_t data, long nsDelay) {
       struct timespec ts, now;
       clock_gettime(CLOCK_MONOTONIC_RAW, &now);
       ts.tv_nsec = now.tv_nsec + nsDelay;
+      if (ts.tv_nsec >= 1e9) {
+        ts.tv_nsec -= 1e9;
+      }
       while (now.tv_nsec < ts.tv_nsec) {
         clock_gettime(CLOCK_MONOTONIC_RAW, &now);
       }
-      //nanosleep(&ts, 0);
     }
     outb((ctl & ~STROBE), CONTROL);
   }

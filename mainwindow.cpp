@@ -4,6 +4,7 @@
 #include <QtWidgets>
 #include <QMessageBox>
 #include <thread>
+#include "test_thread.h"
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
@@ -108,4 +109,34 @@ void MainWindow::on_testControlSlider_valueChanged(int value)
       test.hw.control(controlData_);
       test.hw.writeData(0, (value == 5) ? 10000:0); // decoder output will generate a pulse
     }
+}
+
+void MainWindow::on_testWatchdogButton_toggled(bool checked)
+{
+  if (checked) {
+    pWorkerThread_ = new QThread;
+    worker = new TestThread(&test.hw);
+    worker->setWatchdogDelay(watchdogDelay_);
+
+    worker->moveToThread(pWorkerThread_);
+    connect(pWorkerThread_, SIGNAL(started()), worker, SLOT(doWork()));
+    connect(worker, SIGNAL(finished()), pWorkerThread_, SLOT(quit()));
+    connect(worker, SIGNAL(finished()), worker, SLOT(deleteLater()));
+    connect(pWorkerThread_, SIGNAL(finished()), pWorkerThread_, SLOT(deleteLater()));
+    pWorkerThread_->start();
+
+    //qDebug() << "Toggle test ON";
+  }
+  else {
+    //qDebug() << "Toggle test OFF";
+    worker->keepRunning = false;
+    pWorkerThread_->quit();
+    pWorkerThread_->wait();
+  }
+}
+
+void MainWindow::on_delayBox_valueChanged(int arg1)
+{
+    watchdogDelay_ = arg1;
+    worker->setWatchdogDelay(arg1);
 }
