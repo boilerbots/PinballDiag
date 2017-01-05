@@ -24,7 +24,7 @@ class HW {
   }
 
   void control(uint8_t reg);  // write to a control register
-  void writeData(uint8_t data, time_t delay = 0); // latch data
+  void writeData(uint8_t data, long nsDelay = 0); // latch data
   void writeDataOnly(uint8_t data) { outb(data, BASE); }
 
   void setInit(bool high) {

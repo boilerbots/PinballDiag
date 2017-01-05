@@ -48,13 +48,19 @@ void HW::control(uint8_t reg) {
   }
 }
 
-void HW::writeData(uint8_t data, time_t delay) {
+void HW::writeData(uint8_t data, long nsDelay) {
 
   if (!sim) {
     outb(data,BASE);
     outb((ctl | STROBE), CONTROL); // stobe low   - hardware inverted
-    if (delay) {
-      usleep(delay);
+    if (nsDelay) {
+      struct timespec ts, now;
+      clock_gettime(CLOCK_MONOTONIC_RAW, &now);
+      ts.tv_nsec = now.tv_nsec + nsDelay;
+      while (now.tv_nsec < ts.tv_nsec) {
+        clock_gettime(CLOCK_MONOTONIC_RAW, &now);
+      }
+      //nanosleep(&ts, 0);
     }
     outb((ctl & ~STROBE), CONTROL);
   }

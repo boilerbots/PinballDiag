@@ -106,6 +106,6 @@ void MainWindow::on_testControlSlider_valueChanged(int value)
     controlData_ = value;
     if (ui->testControlButton->isChecked()) {
       test.hw.control(controlData_);
-      test.hw.writeData(0, (value == 5) ? 10:0); // decoder output will generate a pulse
+      test.hw.writeData(0, (value == 5) ? 10000:0); // decoder output will generate a pulse
     }
 }
