@@ -5,6 +5,10 @@ a simple GUI. The code is written in C++ to have good control over the timing.
 Use this tool with a Linux machine to debug the Pinball 2000 driver board on a
 bench.
 
+## Screen shot
+
+(img/pinballDiag_main.png)
+
 ## Dependencies
 
 You will need a linux machine, I built this on Ubuntu 16.04.
@@ -40,11 +44,13 @@ change the permissions but running it as root is easy.
 sudo ./PinballDiag
 ```
 
+See the github wiki pages for more information.
+
 ## Authors
 
 * **Curt Meyers** (http://www.boilerbots.com)
 
 ## License
 
-This project is licensed under the BSD license - see the [LICENSE.txt] file.
+This project is licensed under the BSD license - see the [LICENSE.txt](LICENSE.md) file.
 
