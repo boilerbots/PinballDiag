@@ -24,3 +24,6 @@ HEADERS  += mainwindow.h \
     test_thread.h
 
 FORMS    += mainwindow.ui
+
+DISTFILES += \
+    LICENSE.txt

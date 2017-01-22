@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) [2016], [Curt Meyers]
+ * All rights reserved.
+*/
 
 #include <iostream>
 

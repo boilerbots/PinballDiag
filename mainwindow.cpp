@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) [2016], [Curt Meyers]
+ * All rights reserved.
+*/
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QtCore>

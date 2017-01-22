@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) [2016], [Curt Meyers]
+ * All rights reserved.
+*/
 #pragma once
 #include <sys/io.h>
 #include <unistd.h>

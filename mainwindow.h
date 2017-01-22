@@ -1,3 +1,7 @@
+/*
+ * Copyright (c) [2016], [Curt Meyers]
+ * All rights reserved.
+*/
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
