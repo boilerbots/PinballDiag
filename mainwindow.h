@@ -51,6 +51,26 @@ private slots:
 
     void on_delayBox_valueChanged(int arg1);
 
+    void on_testReadDip_clicked();
+
+    void on_testReadCoin_clicked();
+
+    void on_testReadFlip_clicked();
+
+    void on_testReadMisc_clicked();
+
+    void on_testReadRow_clicked();
+
+    void on_testReadZero_clicked();
+
+    void on_testReadLmpStA_clicked();
+
+    void on_testReadLmpStB_clicked();
+
+    void on_testReadFusTstA_clicked();
+
+    void on_testReadFusTstB_clicked();
+
 public slots:
     void messageBox(const QString messsage);
 
@@ -63,6 +83,9 @@ private:
     QThread *pWorkerThread_;
     TestThread *worker;
     long watchdogDelay_;
+
+    void readThis(uint8_t reg);
+
 };
 
 #endif // MAINWINDOW_H

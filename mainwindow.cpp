@@ -140,3 +140,65 @@ void MainWindow::on_delayBox_valueChanged(int arg1)
     watchdogDelay_ = arg1;
     worker->setWatchdogDelay(arg1);
 }
+
+void MainWindow::readThis(uint8_t reg)
+{
+  uint8_t result;
+  test.hw.control(reg);
+  test.hw.readData(&result);
+  //ui->readBack->display((int)result);
+  QString result_str;
+  result_str = QString("0X%1").arg(result,2,16,QLatin1Char('0'));
+  //QTextStream(&result_str) << "0x" << result;
+  ui->readBackText->setText(result_str);
+}
+
+void MainWindow::on_testReadDip_clicked()
+{
+  readThis(0x2);
+}
+
+void MainWindow::on_testReadCoin_clicked()
+{
+  readThis(0x0);
+}
+
+void MainWindow::on_testReadFlip_clicked()
+{
+  readThis(0x1);
+}
+
+void MainWindow::on_testReadMisc_clicked()
+{
+  readThis(0x3);
+}
+
+void MainWindow::on_testReadRow_clicked()
+{
+  readThis(0x4);
+}
+
+void MainWindow::on_testReadZero_clicked()
+{
+  readThis(0xF);
+}
+
+void MainWindow::on_testReadLmpStA_clicked()
+{
+  readThis(0x10);
+}
+
+void MainWindow::on_testReadLmpStB_clicked()
+{
+  readThis(0x11);
+}
+
+void MainWindow::on_testReadFusTstA_clicked()
+{
+  readThis(0x12);
+}
+
+void MainWindow::on_testReadFusTstB_clicked()
+{
+  readThis(0x13);
+}

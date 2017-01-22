@@ -67,3 +67,11 @@ void HW::writeData(uint8_t data, long nsDelay) {
     outb((ctl & ~STROBE), CONTROL);
   }
 }
+
+void HW::readData(uint8_t *result) {
+  portIn();
+
+  outb((ctl | STROBE), CONTROL); // stobe low   - hardware inverted
+  *result = (uint8_t)inb(BASE);
+  outb((ctl & ~STROBE), CONTROL);
+}
