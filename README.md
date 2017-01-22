@@ -7,7 +7,7 @@ bench.
 
 ## Screen shot
 
-[img/pinballDiag_main.png]
+[screenshot](./img/pinballDiag_main.png)
 
 ## Dependencies
 
