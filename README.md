@@ -42,7 +42,7 @@ sudo ./PinballDiag
 
 ## Authors
 
-* **Curt Meyers**
+* **Curt Meyers** (http://www.boilerbots.com)
 
 ## License
 
