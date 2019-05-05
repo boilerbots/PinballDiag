@@ -11,10 +11,13 @@ bench.
 
 ## Dependencies
 
-You will need a linux machine, I built this on Ubuntu 16.04.
+You will need a linux machine, I built this on Ubuntu 18.04.
 
 You will need the follow packages installed to build the source code:
-* qtcreator
+
+```
+sudo apt install qt5-default qt5-qmake
+```
 
 ## Building the project
 
@@ -37,10 +40,13 @@ make
 
 ## Run
 
-The executable should be in the build directory. You need to run this as root or
-change the permissions but running it as root is easy.
+The executable should be in the build directory. You need to run this as root 
+because of the ioperm calls. This works under X but under Wayland you need to
+allow the application to connect to the display manager. Use `xhost` to modify
+the permissions, the command below will allow anything to connect.
 
 ```
+xhost +
 sudo ./PinballDiag
 ```
 
